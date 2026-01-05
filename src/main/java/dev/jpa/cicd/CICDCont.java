@@ -13,9 +13,11 @@ public class CICDCont {
     System.out.println("-> CICDCont created.");
   }
 
-  // http://localhost:9091/cicd?sw=-1
-  // http://localhost:9091/cicd?sw=0
-  // http://localhost:9091/cicd?sw=1
+  // http://localhost:9091/cicd?sw=-1, http://121.78.128.17:9091/cicd?sw=-1
+  // http://localhost:9091/cicd?sw=0, http://121.78.128.17:9091/cicd?sw=0
+  // http://localhost:9091/cicd?sw=1, http://121.78.128.17:9091/cicd?sw=1
+  // http://localhost:9091/cicd?sw=2, http://121.78.128.17:9091/cicd?sw=2
+  // http://localhost:9091/cicd?sw=3, http://121.78.128.17:9091/cicd?sw=3
   @GetMapping("/cicd")
   public String cicd(@RequestParam(name="sw", defaultValue = "1") Integer sw) { // defaultValue = "1" -> 1
     String msg = "";
@@ -35,7 +37,14 @@ public class CICDCont {
     }else if (sw == 1) {
       msg = "/cicd 호출됨, info 로그";
       log.info(msg);
+    } else if (sw == 2) {
+      msg = "/cicd 새해복 많이 받으세요.";
+      log.info(msg);
+    } else if (sw == 3) {
+      msg = "/cicd 5일부터 수업 시작.";
+      log.info(msg);
     }
+    
     return "<h3>" + msg + "</h3>";
   }
 }
